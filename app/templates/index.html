@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+<h1 id="title">Hi, {{ user.username }}!</h1>
+{% for post in posts %}
+<div>
+  <h3>By: {{ post.author.username }}</h3>
+  <p>{{ post.body }}</p>
+</div>
+{% endfor %}
+<script>
+  var title = document.getElementById("title");
+  title.addEventListener("mouseover", function () {
+    title.style.color = "green";
+  });
+  title.addEventListener("mouseout", function () {
+    title.style.color = "black";
+  });
+</script>
+{% endblock %}
