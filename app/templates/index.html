@@ -7,10 +7,15 @@
 </div>
 {% endfor %}
 <script>
+  // Get the title element, store it in the variable title
   var title = document.getElementById("title");
+  // Add a listener for when you hover your mouse over the title box, and a function to be called when you do
   title.addEventListener("mouseover", function () {
+    // When you do hover over, change the color of the title to green
     title.style.color = "green";
   });
+
+  // Listener for when you stop hovering over the title -> Change back to black
   title.addEventListener("mouseout", function () {
     title.style.color = "black";
   });
