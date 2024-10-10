@@ -1,9 +1,10 @@
 from urllib.parse import urlparse
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
-from app import app, db
+from app import app, db, posts
 from app.forms import LoginForm, RegistrationForm
 from app.models import User
+from app.posts import Posts
 
 
 @app.route('/')
@@ -59,3 +60,12 @@ def register():
         flash("You're registered!")
         return redirect(url_for("login"))
     return render_template("register.html", title="Register", form=form)
+
+@app.route("/posts")
+def view_posts():
+    return render_template("posts.html", posts=posts.get_posts())
+
+@app.route("/posts/<post_id>")
+def view_post(post_id):
+    post = posts.get_post(post_id)
+    return render_template("post.html", post=post, post_id=post_id)

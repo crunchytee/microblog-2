@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <div id="{{ post_id }}">
+    <h2>{{ post.title[0]|upper }}{{ post.title[1:] }}</h2>
+    <h3>By: {{ post.author }} on {{ post.date }}</h3>
+    <p>{{ post.html_content|safe }}</p>
+    <button>Likes: {{ post.post_reactions["up"] }}</button>
+    <button>Dislikes: {{ post.post_reactions["down"] }}</button>
+    <div id="comments">
+      <h4>Comments</h4>
+      {% for comment_id, comment in post.comments.items() %}
+      <div id="{{ comment_id }}">
+        <p>By: {{ comment.comment_author }}: {{ comment.comment }}</p>
+        <button>Likes: {{ comment.comment_reactions["up"] }}</button>
+        <button>Dislikes: {{ comment.comment_reactions["down"] }}</button>
+        <br />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
