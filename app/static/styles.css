@@ -1,0 +1,48 @@
+/* Reset body and html margins */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #fef8ec;
+  color: #1f271b;
+  font-family: Verdana, sans-serif;
+}
+
+/* Main content area */
+.content {
+  padding: 10px;
+  min-height: 80vh; /* Adjust as per the header height */
+}
+
+/* Fixed header at the bottom */
+.header {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #c6d8d3;
+  text-align: center;
+  padding: 5px 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+}
+
+.header_links {
+}
+.header_link {
+  margin-left: 10px;
+}
+
+a:link,
+a:visited {
+  color: #303c2a;
+}
+
+.title {
+  font-weight: 900;
+  font-style: italic;
+  margin-right: 2em;
+}

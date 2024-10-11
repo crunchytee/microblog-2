@@ -1,27 +1,27 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
     {% if title %}
     <title>{{ title }} | microblog</title>
     {% else %}
     <title>microblog</title>
     {% endif %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <div>
-      Microblog:
-      <a href="{{ url_for('index') }}">Home</a>
-      {% if current_user.is_authenticated %}
-      <a href="{{ url_for('logout') }}">Log Out</a>
-      {% else%}
-      <a href="{{ url_for('login') }}">Log In</a>
-      {% endif %}
-    </div>
     {% with messages = get_flashed_messages()%} {% if messages %}
     <ul>
       {% for message in messages %}
       <li>{{ message }}</li>
       {% endfor %}
     </ul>
-    {% endif %} {% endwith %} {% block content %} {% endblock %}
+    {% endif %} {% endwith %}
+    <div class="content">{% block content %} {% endblock %}</div>
+    <header>{% include "_navbar.html"%}</header>
   </body>
 </html>

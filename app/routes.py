@@ -9,19 +9,9 @@ from app.posts import Posts
 
 @app.route('/')
 @app.route('/index')
-@login_required
+# @login_required
 def index():
-    posts = [
-        {
-            "author": {"username": "Tosh"},
-            "body": "Beautiful day in Sacramento!"
-        }, 
-        {
-            "author": {"username": "Serhii"},
-            "body": "horrible day in Sacramento..."
-        }
-    ]
-    return render_template("index.html", title="home", posts=posts)
+    return render_template("posts.html", posts=posts.get_posts(), title="Home | Posts")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -63,9 +53,9 @@ def register():
 
 @app.route("/posts")
 def view_posts():
-    return render_template("posts.html", posts=posts.get_posts())
+    return render_template("posts.html", posts=posts.get_posts(), title="Posts")
 
 @app.route("/posts/<post_id>")
 def view_post(post_id):
     post = posts.get_post(post_id)
-    return render_template("post.html", post=post, post_id=post_id)
+    return render_template("post.html", post=post, post_id=post_id, title="Post")
