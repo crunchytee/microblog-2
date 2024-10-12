@@ -59,3 +59,4 @@ def view_posts():
 def view_post(post_id):
     post = posts.get_post(post_id)
     return render_template("post.html", post=post, post_id=post_id, title="Post")
+
